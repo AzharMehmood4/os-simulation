@@ -10,13 +10,13 @@ export function priorityScheduling(processes) {
     let available = procs.filter(p => !p.done && p.arrivalTime <= currentTime);
 
     if (available.length === 0) {
-      currentTime++; // If no process available, move time forward
+      currentTime++;
       continue;
     }
 
     // Sort by priority (smaller number = higher priority), then by arrival time
     available.sort((a, b) => a.priority - b.priority || a.arrivalTime - b.arrivalTime);
-    let p = available[0]; // Pick the highest priority process
+    let p = available[0]; 
 
     let start = currentTime;
     let end = start + p.burstTime;
