@@ -9,6 +9,7 @@ import { fcfs } from "./algorithms/fcfs";
 import { sjn } from "./algorithms/sjn";
 import { priorityScheduling } from "./algorithms/priority";
 import { roundRobin } from "./algorithms/roundRobin";
+import DeadlockSimulator from "./components/DeadlockSimulator";
 
 export default function App() {
   const [processes, setProcesses] = useState([]);
@@ -40,6 +41,7 @@ export default function App() {
             <ResultsTable processes={result.processes} />
             <GanttChart gantt={result.gantt} />
             <MetricsCard processes={result.processes} totalTime={result.totalTime} />
+            <DeadlockSimulator processes={processes} />
           </>
         )}
       </div>
