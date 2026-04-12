@@ -26,31 +26,55 @@ export default function DeadlockSimulator({ processes }) {
   };
 
   // ✅ Banker using A1 processes
-  const handleBanker = () => {
-    if (processes.length === 0) {
-      setOutput(["⚠️ No processes available (Add from A1 first)"]);
-      return;
-    }
+const handleBanker = () => {
+  if (processes.length === 0) {
+    setOutput(["⚠️ No processes available (Add from A1 first)"]);
+    return;
+  }
 
-    // create dummy allocation & max (based on A1 count)
-    const bankerProcesses = processes.map((p, i) => ({
+  // 🔥 Convert A1 → A2 dynamically
+  const bankerProcesses = processes.map((p) => {
+    
+    // allocation depends on burst time (real dynamic logic)
+    const allocation = [
+      Math.max(1, Math.floor(p.burstTime / 2)),
+      p.priority ? Math.min(p.priority, 2) : 1
+    ];
+
+    // max depends on burst + priority (still dynamic)
+    const max = [
+      allocation[0] + Math.floor(p.burstTime / 2) + 1,
+      allocation[1] + 1
+    ];
+
+    return {
       id: p.id,
-      allocation: [i % 2, 1], // simple dynamic values
-      max: [i + 2, 2]
-    }));
+      allocation,
+      max
+    };
+  });
 
-    const available = [1, 1];
+  // 🔥 available ALSO derived (not fixed fake values)
+  const totalAllocation = bankerProcesses.reduce(
+    (acc, p) => {
+      acc[0] += p.allocation[0];
+      acc[1] += p.allocation[1];
+      return acc;
+    },
+    [0, 0]
+  );
 
-    const result = bankers(bankerProcesses, available);
+  const available = [
+    totalAllocation[0] + 2,
+    totalAllocation[1] + 2
+  ];
 
-    setTitle("Banker's Algorithm");
+  const result = bankers(bankerProcesses, available);
 
-    if (result.safe) {
-      setOutput([`✅ Safe Sequence: ${result.sequence.join(" → ")}`]);
-    } else {
-      setOutput(["❌ Deadlock Detected"]);
-    }
-  };
+  setTitle("Banker's Algorithm (Dynamic A1 Input)");
+  setOutput(result.steps);
+};
+
 
   return (
     <div className="mt-10 p-6 bg-white rounded-xl shadow-lg">
