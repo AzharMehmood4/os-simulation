@@ -6,7 +6,7 @@ export default function DeadlockSimulator({ processes }) {
   const [output, setOutput] = useState([]);
   const [title, setTitle] = useState("No Simulation Run");
 
-  // ✅ Mutex using A1 processes
+  // Mutex using A1 processes
   const handleMutex = () => {
     if (processes.length === 0) {
       setOutput(["⚠️ No processes available (Add from A1 first)"]);
@@ -25,14 +25,13 @@ export default function DeadlockSimulator({ processes }) {
     setOutput(result);
   };
 
-  // ✅ Banker using A1 processes
+  // Banker using A1 processes
 const handleBanker = () => {
   if (processes.length === 0) {
     setOutput(["⚠️ No processes available (Add from A1 first)"]);
     return;
   }
 
-  // 🔥 Convert A1 → A2 dynamically
   const bankerProcesses = processes.map((p) => {
     
     // allocation depends on burst time (real dynamic logic)
@@ -54,7 +53,6 @@ const handleBanker = () => {
     };
   });
 
-  // 🔥 available ALSO derived (not fixed fake values)
   const totalAllocation = bankerProcesses.reduce(
     (acc, p) => {
       acc[0] += p.allocation[0];
@@ -79,12 +77,12 @@ const handleBanker = () => {
   return (
     <div className="mt-10 p-6 bg-white rounded-xl shadow-lg">
 
-      {/* 🔥 A2 HEADING */}
+      //title
       <h1 className="text-2xl font-bold text-center text-purple-700 mb-6">
         OS Synchronization & Deadlock Simulator (Assignment 2)
       </h1>
 
-      {/* Show Processes from A1 */}
+      {/* Show Processes  */}
       <div className="mb-4">
         <h2 className="font-semibold mb-2">Processes from A1:</h2>
         {processes.length === 0 ? (
