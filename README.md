@@ -31,12 +31,15 @@ os-simulation/
 ├─ public/
 ├─ src/
 │  ├─ algorithms/
+|  |  ├─ bankers.js 
 │  │  ├─ fcfs.js
 │  │  ├─ priority.js
 │  │  ├─ roundRobin.js
 │  │  └─ sjn.js
+|  |  ├─ synchronization.js
 │  ├─ components/
 │  │  ├─ AlgorithmSelector.jsx
+|  |  ├─ DeadlockSimulator.jsx
 │  │  ├─ GanttChart.jsx
 │  │  ├─ MetricsCard.jsx
 │  │  ├─ ProcessForm.jsx
