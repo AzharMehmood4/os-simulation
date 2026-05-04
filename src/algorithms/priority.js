@@ -1,5 +1,4 @@
 export function priorityScheduling(processes) {
-  // Make a copy and add `done` flag
   let procs = processes.map(p => ({ ...p, done: false }));
   let completed = [];
   let currentTime = 0;
