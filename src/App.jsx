@@ -36,8 +36,14 @@ export default function App() {
     setResult(output);
   };
   const addProces = (name, size) => {
-    const newProcess = { name, size };
-    setProcessQueue([...processQueue, newProcess]);
+    const newProcess = {
+      name,
+      size,
+      status: "WAITING",
+    };
+
+    const updatedQueue = [...processQueue, newProcess];
+    setProcessQueue(updatedQueue);
 
     let index;
 
@@ -50,12 +56,29 @@ export default function App() {
     }
 
     if (index !== -1) {
-      const updated = [...blocks];
-      updated[index].allocated = true;
-      updated[index].process = name;
-      setBlocks(updated);
+      const updatedBlocks = [...blocks];
+
+      updatedBlocks[index].allocated = true;
+      updatedBlocks[index].process = {
+        name,
+        size,
+      };
+
+      setBlocks(updatedBlocks);
+
+      // Update  status in queue
+      const finalQueue = updatedQueue.map((p) =>
+        p.name === name ? { ...p, status: "ALLOCATED IN MEMORY" } : p,
+      );
+
+      setProcessQueue(finalQueue);
     } else {
-      alert(`${name} is waiting (No memory available)`);
+
+      const finalQueue = updatedQueue.map((p) =>
+        p.name === name ? { ...p, status: "WAITING (NO MEMORY)" } : p,
+      );
+
+      setProcessQueue(finalQueue);
     }
   };
   const [blocks, setBlocks] = useState([
@@ -69,17 +92,26 @@ export default function App() {
 
   const [algo, setAlgo] = useState("first");
   const [pageFaults, setPageFaults] = useState(0);
+  const [pageAlgoStatus, setPageAlgoStatus] = useState("");
 
   const runFIFO = (pages, frames) => {
     setPageFaults(fifo(pages, frames));
+    setPageAlgoStatus("FIFO is running");
   };
 
   const runLRU = (pages, frames) => {
     setPageFaults(lru(pages, frames));
+    setPageAlgoStatus("LRU is running");
   };
 
   const runOPT = (pages, frames) => {
     setPageFaults(opt(pages, frames));
+    setPageAlgoStatus("OPT is running");
+  };
+  const getAlgoStatus = () => {
+    if (algo === "first") return "First Fit (ACTIVE)";
+    if (algo === "best") return "Best Fit (ACTIVE)";
+    return "Worst Fit (ACTIVE)";
   };
   return (
     <>
@@ -155,7 +187,13 @@ export default function App() {
       <div className="p-6">
         <h1 className="text-2xl font-bold">Memory Management Simulator (A3)</h1>
 
-        {/* <Controls setAlgo={setAlgo} /> */}
+        <div className="p-3 mb-4 bg-gray-100 rounded">
+          <h3 className="font-bold">Current Memory Allocation Algorithm</h3>
+
+          <p className="text-blue-600 font-semibold">{getAlgoStatus()}</p>
+        </div>
+
+        {/* ALGO SELECTOR */}
         <div className="mb-4">
           <select
             value={algo}
@@ -167,15 +205,23 @@ export default function App() {
             <option value="worst">Worst Fit</option>
           </select>
         </div>
+
+        {/* INPUT */}
         <Processf addProcess={addProces} />
+
+        {/* QUEUE */}
         <ProcessQueue queue={processQueue} />
+
+        {/* MEMORY BLOCKS */}
         <MemoryBlocks blocks={blocks} />
 
+        {/* PAGE REPLACEMENT */}
         <PageReplacement
           runFIFO={runFIFO}
           runLRU={runLRU}
           runOPT={runOPT}
           result={pageFaults}
+          pageAlgoStatus={pageAlgoStatus}
         />
       </div>
     </>

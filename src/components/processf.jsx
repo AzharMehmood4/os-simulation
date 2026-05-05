@@ -1,31 +1,3 @@
-// import { useState } from "react";
-
-// export default function Processf({ addProces }) {
-//   const [size, setSize] = useState("");
-
-//   return (
-//     <div className="mt-4">
-//       <input
-//         type="number"
-//         placeholder="Process Size"
-//         value={size}
-//         onChange={e => setSize(e.target.value)}
-//         className="border p-2 mr-2"
-//       />
-//       <button
-//         onClick={() => {
-//           addProces(Number(size));
-//           setSize("");
-//         }}
-//         className="bg-blue-500 text-white px-4 py-2 rounded"
-//       >
-//         Add Process
-//       </button>
-//     </div>
-//   );
-// }
-
-
 import { useState } from "react";
 
 export default function ProcessForm({ addProcess }) {
