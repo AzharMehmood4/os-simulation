@@ -1,3 +1,6 @@
+export function calculatePages(size, pageSize) {
+  return Math.ceil(size / pageSize);
+}
 /* ================= FIFO ================= */
 export function fifoPageReplacement(pages, frames) {
   let memory = [];

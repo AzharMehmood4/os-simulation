@@ -26,7 +26,7 @@ export default function PagingSimulator() {
     <div className="mt-10 p-6 bg-white rounded-xl shadow-lg">
 
       <h2 className="text-xl font-bold text-center text-green-700 mb-4">
-        Paging & Page Replacement (A3)
+        Paging & Page Replacement
       </h2>
 
       {/* INPUT */}
