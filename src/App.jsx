@@ -10,13 +10,6 @@ import { priorityScheduling } from "./algorithms/priority";
 import { roundRobin } from "./algorithms/roundRobin";
 import DeadlockSimulator from "./components/DeadlockSimulator";
 import MemoryManager from "./components/MemoryManager";
-import MemoryBlocks from "./components/MemoryBlocks";
-import Controls from "./components/Controls";
-import PageReplacement from "./components/PageReplacement";
-import Processf from "./components/processf";
-import ProcessQueue from "./components/ProcessQueue";
-import { firstFit, bestFit, worstFit } from "./algorithms/allocation";
-import { fifo, lru, opt } from "./algorithms/replacement";
 
 export default function App() {
   const [view, setView] = useState("SCHEDULING");
@@ -35,84 +28,7 @@ export default function App() {
     else if (algorithm === "RR") output = roundRobin(processes, quantum);
     setResult(output);
   };
-  const addProces = (name, size) => {
-    const newProcess = {
-      name,
-      size,
-      status: "WAITING",
-    };
 
-    const updatedQueue = [...processQueue, newProcess];
-    setProcessQueue(updatedQueue);
-
-    let index;
-
-    if (algo === "first") {
-      index = firstFit(blocks, size);
-    } else if (algo === "best") {
-      index = bestFit(blocks, size);
-    } else {
-      index = worstFit(blocks, size);
-    }
-
-    if (index !== -1) {
-      const updatedBlocks = [...blocks];
-
-      updatedBlocks[index].allocated = true;
-      updatedBlocks[index].process = {
-        name,
-        size,
-      };
-
-      setBlocks(updatedBlocks);
-
-      // Update  status in queue
-      const finalQueue = updatedQueue.map((p) =>
-        p.name === name ? { ...p, status: "ALLOCATED IN MEMORY" } : p,
-      );
-
-      setProcessQueue(finalQueue);
-    } else {
-
-      const finalQueue = updatedQueue.map((p) =>
-        p.name === name ? { ...p, status: "WAITING (NO MEMORY)" } : p,
-      );
-
-      setProcessQueue(finalQueue);
-    }
-  };
-  const [blocks, setBlocks] = useState([
-    { size: 100, allocated: false, process: null },
-    { size: 500, allocated: false, process: null },
-    { size: 200, allocated: false, process: null },
-    { size: 300, allocated: false, process: null },
-  ]);
-
-  const [processQueue, setProcessQueue] = useState([]);
-
-  const [algo, setAlgo] = useState("first");
-  const [pageFaults, setPageFaults] = useState(0);
-  const [pageAlgoStatus, setPageAlgoStatus] = useState("");
-
-  const runFIFO = (pages, frames) => {
-    setPageFaults(fifo(pages, frames));
-    setPageAlgoStatus("FIFO is running");
-  };
-
-  const runLRU = (pages, frames) => {
-    setPageFaults(lru(pages, frames));
-    setPageAlgoStatus("LRU is running");
-  };
-
-  const runOPT = (pages, frames) => {
-    setPageFaults(opt(pages, frames));
-    setPageAlgoStatus("OPT is running");
-  };
-  const getAlgoStatus = () => {
-    if (algo === "first") return "First Fit (ACTIVE)";
-    if (algo === "best") return "Best Fit (ACTIVE)";
-    return "Worst Fit (ACTIVE)";
-  };
   return (
     <>
       <div className="min-h-screen bg-gray-100 p-6">
@@ -184,46 +100,7 @@ export default function App() {
           {view === "MEMORY" && <MemoryManager processes={processes} />}
         </div>
       </div>
-      <div className="p-6">
-        <h1 className="text-2xl font-bold">Memory Management Simulator (A3)</h1>
-
-        <div className="p-3 mb-4 bg-gray-100 rounded">
-          <h3 className="font-bold">Current Memory Allocation Algorithm</h3>
-
-          <p className="text-blue-600 font-semibold">{getAlgoStatus()}</p>
-        </div>
-
-        {/* ALGO SELECTOR */}
-        <div className="mb-4">
-          <select
-            value={algo}
-            onChange={(e) => setAlgo(e.target.value)}
-            className="border p-2"
-          >
-            <option value="first">First Fit</option>
-            <option value="best">Best Fit</option>
-            <option value="worst">Worst Fit</option>
-          </select>
-        </div>
-
-        {/* INPUT */}
-        <Processf addProcess={addProces} />
-
-        {/* QUEUE */}
-        <ProcessQueue queue={processQueue} />
-
-        {/* MEMORY BLOCKS */}
-        <MemoryBlocks blocks={blocks} />
-
-        {/* PAGE REPLACEMENT */}
-        <PageReplacement
-          runFIFO={runFIFO}
-          runLRU={runLRU}
-          runOPT={runOPT}
-          result={pageFaults}
-          pageAlgoStatus={pageAlgoStatus}
-        />
-      </div>
+      
     </>
   );
 }

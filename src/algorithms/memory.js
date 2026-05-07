@@ -1,9 +1,9 @@
 /* ================= FIRST FIT ================= */
 export function firstFit(processes, blocks) {
-  let memory = blocks.map(size => ({
+  let memory = blocks.map((size) => ({
     size,
     free: true,
-    process: null
+    process: null,
   }));
 
   let log = [];
@@ -17,14 +17,22 @@ export function firstFit(processes, blocks) {
         memory[i].free = false;
         memory[i].process = p.id;
 
-        log.push(`✅ ${p.id} allocated to Block ${i} (${memory[i].size})`);
+        log.push(
+          `✅ ${p.id} (${p.memory}KB) allocated to Block ${
+            i + 1
+          } (${memory[i].size}KB)`
+        );
+
         allocated = true;
         break;
       }
     }
 
     if (!allocated) {
-      log.push(`⏳ ${p.id} waiting (No suitable block)`);
+      log.push(
+        `⏳ ${p.id} (${p.memory}KB) waiting (No suitable block)`
+      );
+
       waiting.push(p.id);
     }
   }
@@ -34,13 +42,14 @@ export function firstFit(processes, blocks) {
 
 /* ================= BEST FIT ================= */
 export function bestFit(processes, blocks) {
-  let memory = blocks.map(size => ({
+  let memory = blocks.map((size) => ({
     size,
     free: true,
-    process: null
+    process: null,
   }));
 
   let log = [];
+  let waiting = [];
 
   for (let p of processes) {
     let bestIndex = -1;
@@ -61,24 +70,31 @@ export function bestFit(processes, blocks) {
       memory[bestIndex].free = false;
       memory[bestIndex].process = p.id;
 
-      log.push(`✅ ${p.id} allocated (Best Fit) → Block ${bestIndex}`);
+      log.push(
+        `✅ ${p.id} (${p.memory}KB) allocated to Block ${
+          bestIndex + 1
+        } using Best Fit`
+      );
     } else {
-      log.push(`⏳ ${p.id} waiting`);
+      log.push(`⏳ ${p.id} (${p.memory}KB) waiting`);
+
+      waiting.push(p.id);
     }
   }
 
-  return { memory, log };
+  return { memory, log, waiting };
 }
 
 /* ================= WORST FIT ================= */
 export function worstFit(processes, blocks) {
-  let memory = blocks.map(size => ({
+  let memory = blocks.map((size) => ({
     size,
     free: true,
-    process: null
+    process: null,
   }));
 
   let log = [];
+  let waiting = [];
 
   for (let p of processes) {
     let worstIndex = -1;
@@ -97,11 +113,17 @@ export function worstFit(processes, blocks) {
       memory[worstIndex].free = false;
       memory[worstIndex].process = p.id;
 
-      log.push(`✅ ${p.id} allocated (Worst Fit) → Block ${worstIndex}`);
+      log.push(
+        `✅ ${p.id} (${p.memory}KB) allocated to Block ${
+          worstIndex + 1
+        } using Worst Fit`
+      );
     } else {
-      log.push(`⏳ ${p.id} waiting`);
+      log.push(`⏳ ${p.id} (${p.memory}KB) waiting`);
+
+      waiting.push(p.id);
     }
   }
 
-  return { memory, log };
+  return { memory, log, waiting };
 }
