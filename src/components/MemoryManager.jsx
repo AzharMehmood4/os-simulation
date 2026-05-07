@@ -63,7 +63,7 @@ export default function MemoryManager({ processes }) {
       
       {/* TITLE */}
       <h1 className="text-3xl font-bold text-center text-purple-700 mb-8">
-        Memory Management Simulator
+        Memory Management Simulator (Assignment 3)
       </h1>
 
       {/* PROCESS SECTION */}

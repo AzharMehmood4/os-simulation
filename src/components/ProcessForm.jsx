@@ -28,6 +28,10 @@ export default function ProcessForm({ onAdd }) {
   };
 
   return (
+    <>
+    <h1 className="text-3xl mt-10 font-bold text-center text-purple-700 mb-6">
+       Process Scheduling Algorithms Simulation (Assignment )
+      </h1>
     <form className="flex flex-wrap gap-3 mb-4" onSubmit={handleSubmit}>
       <input
         type="number"
@@ -82,5 +86,6 @@ export default function ProcessForm({ onAdd }) {
         Add Process
       </button>
     </form>
+    </>
   );
 }

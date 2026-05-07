@@ -73,7 +73,7 @@ export function bestFit(processes, blocks) {
       log.push(
         `✅ ${p.id} (${p.memory}KB) allocated to Block ${
           bestIndex + 1
-        } using Best Fit`
+        } `
       );
     } else {
       log.push(`⏳ ${p.id} (${p.memory}KB) waiting`);
@@ -116,7 +116,7 @@ export function worstFit(processes, blocks) {
       log.push(
         `✅ ${p.id} (${p.memory}KB) allocated to Block ${
           worstIndex + 1
-        } using Worst Fit`
+        } `
       );
     } else {
       log.push(`⏳ ${p.id} (${p.memory}KB) waiting`);
