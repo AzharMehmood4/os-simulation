@@ -216,10 +216,7 @@ function MetricsCard({ processes, totalTime }) {
    MAIN 
 ========================= */
 export default function ProcessSchedulingA1({
-  processes,
-  setProcesses,
   result,
-  setResult,
   algorithm,
   setAlgorithm,
   quantum,
