@@ -11,10 +11,10 @@ export default function ProcessForm({ onAdd, files }) {
     e.preventDefault();
 
     // Select Any file
-    if (!file) {
-      alert("Please select a file!");
-      return;
-    }
+    // if (!file) {
+    //   alert("Please select a file!");
+    //   return;
+    // }
 
     onAdd({
       id: "P" + counter,
