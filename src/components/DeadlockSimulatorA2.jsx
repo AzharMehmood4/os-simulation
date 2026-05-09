@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { runMutex } from "../algorithms/synchronization";
-import { bankers } from "../algorithms/bankers";
+import { runMutex, bankers } from "../algorithms/synchronizationA2";
 
-export default function DeadlockSimulator({ processes }) {
+export default function DeadlockSimulatorA2({ processes }) {
   const [output, setOutput] = useState([]);
   const [title, setTitle] = useState("No Simulation Run");
 

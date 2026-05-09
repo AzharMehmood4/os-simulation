@@ -5,7 +5,7 @@ import {
   deleteFileBlocks,
   calculateDiskUsage,
   calculateFragmentation,
-} from "../algorithms/fileSystem";
+} from "../algorithms/fileSystemA4";
 
 export default function FileSystemSimulator({
   processes,

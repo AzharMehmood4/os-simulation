@@ -12,7 +12,7 @@ export function fifoPageReplacement(pages, frames) {
       if (memory.length < frames) {
         memory.push(page);
       } else {
-        memory.shift(); // remove oldest
+        memory.shift(); 
         memory.push(page);
       }
       faults++;
