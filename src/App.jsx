@@ -10,6 +10,8 @@ import { priorityScheduling } from "./algorithms/priority";
 import { roundRobin } from "./algorithms/roundRobin";
 import DeadlockSimulator from "./components/DeadlockSimulator";
 import MemoryManager from "./components/MemoryManager";
+import FileSystemSimulator from "./components/FileSystemSimulator";
+import { createDisk } from "./algorithms/fileSystem";
 
 export default function App() {
   const [view, setView] = useState("SCHEDULING");
@@ -29,6 +31,25 @@ export default function App() {
     setResult(output);
   };
 
+  const [fileDisk, setFileDisk] = useState(createDisk());
+
+  const [fileList, setFileList] = useState([]);
+
+  const [fileLogs, setFileLogs] = useState([]);
+
+  const [fileMessage, setFileMessage] = useState("");
+
+  const [fileName, setFileName] = useState("");
+  const [fileSize, setFileSize] = useState("");
+  const [fileContent, setFileContent] = useState("");
+
+  const [allocationType, setAllocationType] = useState("Contiguous");
+
+  const [selectedProcess, setSelectedProcess] = useState("");
+
+  const [selectedFile, setSelectedFile] = useState("");
+
+  const [writeContent, setWriteContent] = useState("");
   return (
     <>
       <div className="min-h-screen bg-gray-100 p-6">
@@ -50,7 +71,7 @@ export default function App() {
               onClick={() => setView("DEADLOCK")}
               className="bg-red-500 text-white px-4 py-2 rounded"
             >
-              Deadlock (A2)
+              SYNCHRONIZATION (A2)
             </button>
 
             <button
@@ -58,6 +79,13 @@ export default function App() {
               className="bg-purple-500 text-white px-4 py-2 rounded"
             >
               Memory (A3)
+            </button>
+
+            <button
+              onClick={() => setView("FILESYSTEM")}
+              className="bg-green-600 text-white px-4 py-2 rounded"
+            >
+              File System (A4)
             </button>
           </div>
 
@@ -98,9 +126,36 @@ export default function App() {
 
           {/*MEMORY VIEW */}
           {view === "MEMORY" && <MemoryManager processes={processes} />}
+          {/* FILE SYSTEM VIEW */}
+          {view === "FILESYSTEM" && (
+            <FileSystemSimulator
+              processes={processes}
+              disk={fileDisk}
+              setDisk={setFileDisk}
+              files={fileList}
+              setFiles={setFileList}
+              logs={fileLogs}
+              setLogs={setFileLogs}
+              message={fileMessage}
+              setMessage={setFileMessage}
+              fileName={fileName}
+              setFileName={setFileName}
+              fileSize={fileSize}
+              setFileSize={setFileSize}
+              fileContent={fileContent}
+              setFileContent={setFileContent}
+              allocationType={allocationType}
+              setAllocationType={setAllocationType}
+              selectedProcess={selectedProcess}
+              setSelectedProcess={setSelectedProcess}
+              selectedFile={selectedFile}
+              setSelectedFile={setSelectedFile}
+              writeContent={writeContent}
+              setWriteContent={setWriteContent}
+            />
+          )}
         </div>
       </div>
-      
     </>
   );
 }
