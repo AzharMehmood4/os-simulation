@@ -54,23 +54,21 @@ export default function MemoryManager({ processes }) {
     setBlockNumber("");
   };
   const deleteBlock = (index) => {
-  const updated = [...memoryBlocks];
-  updated.splice(index, 1);
-  setMemoryBlocks(updated);
-};
+    const updated = [...memoryBlocks];
+    updated.splice(index, 1);
+    setMemoryBlocks(updated);
+  };
   return (
     <div className="mt-10 p-8 bg-white rounded-2xl shadow-xl">
-      
-      {/* TITLE */}
-      <h1 className="text-3xl font-bold text-center text-purple-700 mb-8">
-        Memory Management Simulator (Assignment 3)
-      </h1>
+      <div className="bg-white shadow-md rounded-2xl p-5 mb-6 text-center">
+        <h2 className="text-3xl font-bold text-gray-800">
+          Memory Management Simulator (Assignment 3)
+        </h2>
+      </div>
 
       {/* PROCESS SECTION */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4">
-          Processes
-        </h2>
+        <h2 className="text-xl font-semibold text-gray-700 mb-4">Processes</h2>
 
         {processes.length === 0 ? (
           <p className="text-gray-500">No processes available</p>
@@ -84,37 +82,32 @@ export default function MemoryManager({ processes }) {
                 flex items-center justify-between"
               >
                 <div>
-                  <h3 className="font-bold text-lg text-purple-700">
-                    {p.id}
-                  </h3>
+                  <h3 className="font-bold text-lg text-purple-700">{p.id}</h3>
 
                   <p className="text-sm text-gray-500">
                     Arrival: {p.arrivalTime}
                   </p>
 
-                  <p className="text-sm text-gray-500">
-                    Burst: {p.burstTime}
-                  </p>
+                  <p className="text-sm text-gray-500">Burst: {p.burstTime}</p>
                 </div>
                 <div className="flex flex-col items-end gap-1">
-
-  <label className="text-sm font-semibold text-gray-600">
-    Memory Size
-  </label>
-                <input
-                  type="number"
-                  placeholder="Memory Size"
-                  value={processMemory[p.id] || ""}
-                  onChange={(e) =>
-                    setProcessMemory({
-                      ...processMemory,
-                      [p.id]: Number(e.target.value),
-                    })
-                  }
-                  className="border-2 border-purple-200
+                  <label className="text-sm font-semibold text-gray-600">
+                    Memory Size
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="Memory Size"
+                    value={processMemory[p.id] || ""}
+                    onChange={(e) =>
+                      setProcessMemory({
+                        ...processMemory,
+                        [p.id]: Number(e.target.value),
+                      })
+                    }
+                    className="border-2 border-purple-200
                   focus:border-purple-500 outline-none
                   p-2 rounded-lg w-40"
-                />
+                  />
                 </div>
               </div>
             ))}
@@ -124,11 +117,9 @@ export default function MemoryManager({ processes }) {
 
       {/* ADD BLOCK SECTION */}
       <div className="mb-6 bg-gray-50 p-4 rounded-lg">
-
         <h3 className="font-semibold mb-3">Add Memory Block</h3>
 
         <div className="flex gap-3 flex-wrap">
-
           <input
             type="number"
             placeholder="Block No (optional)"
@@ -152,49 +143,41 @@ export default function MemoryManager({ processes }) {
             Add Block
           </button>
           <button
-  onClick={() => setMemoryBlocks([...memoryBlocks])}
-  className="hidden"
->
-</button>
-
+            onClick={() => setMemoryBlocks([...memoryBlocks])}
+            className="hidden"
+          ></button>
         </div>
       </div>
-{/* DELETE BLOCK SECTION */}
-<div className="mt-4 bg-gray-50 p-3 rounded-lg">
+      {/* DELETE BLOCK SECTION */}
+      <div className="mt-4 bg-gray-50 p-3 rounded-lg">
+        <h3 className="font-semibold mb-2">Delete Memory Blocks</h3>
 
-  <h3 className="font-semibold mb-2">Delete Memory Blocks</h3>
+        {memoryBlocks.length === 0 ? (
+          <div className="text-center text-gray-500 py-3 font-medium">
+            🚫 No Memory Blocks Available
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            {memoryBlocks.map((block, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 bg-white px-3 py-1 rounded shadow-sm border"
+              >
+                <span>
+                  Block {i + 1} ({block}KB)
+                </span>
 
-  {memoryBlocks.length === 0 ? (
-    <div className="text-center text-gray-500 py-3 font-medium">
-      🚫 No Memory Blocks Available
-    </div>
-  ) : (
-    <div className="flex flex-wrap gap-2">
-
-      {memoryBlocks.map((block, i) => (
-        <div
-          key={i}
-          className="flex items-center gap-2 bg-white px-3 py-1 rounded shadow-sm border"
-        >
-
-          <span>
-            Block {i + 1} ({block}KB)
-          </span>
-
-          <button
-            onClick={() => deleteBlock(i)}
-            className="text-red-600 font-bold hover:text-red-800"
-          >
-            ✕
-          </button>
-
-        </div>
-      ))}
-
-    </div>
-  )}
-
-</div>
+                <button
+                  onClick={() => deleteBlock(i)}
+                  className="text-red-600 font-bold hover:text-red-800"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
       {/* MEMORY VISUALIZER */}
       <MemoryVisualizer
         memory={
@@ -215,7 +198,7 @@ export default function MemoryManager({ processes }) {
           text-white px-6 py-3 rounded-2xl shadow-lg
           text-lg font-bold tracking-wide"
         >
-          Active Algorithm: {" "}
+          Active Algorithm:{" "}
           <span className="text-yellow-300">
             {algo === "FIRST" && "First Fit"}
             {algo === "BEST" && "Best Fit"}
@@ -267,8 +250,10 @@ export default function MemoryManager({ processes }) {
           </div>
 
           {result.waiting && result.waiting.length > 0 && (
-            <div className="mt-6 bg-red-100 border border-red-300
-            text-red-700 p-4 rounded-xl font-semibold">
+            <div
+              className="mt-6 bg-red-100 border border-red-300
+            text-red-700 p-4 rounded-xl font-semibold"
+            >
               Waiting Queue: {result.waiting.join(", ")}
             </div>
           )}
@@ -278,7 +263,6 @@ export default function MemoryManager({ processes }) {
       <div className="mt-10">
         <PagingSimulator />
       </div>
-
     </div>
   );
 }

@@ -76,10 +76,11 @@ const handleBanker = () => {
 
   return (
     <div className="mt-10 p-6 bg-white rounded-xl shadow-lg">
-
-      <h1 className="text-3xl font-bold text-center text-purple-700 mb-6">
-        OS Synchronization & Deadlock Simulator (Assignment 2)
-      </h1>
+<div className="bg-white shadow-md rounded-2xl p-5 mb-6 text-center">
+        <h2 className="text-3xl font-bold text-gray-800">
+          OS Synchronization & Deadlock Simulator (Assignment 2)
+        </h2>
+      </div>
 
       {/* Show Processes  */}
       <div className="mb-4">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   fifoPageReplacement,
   lruPageReplacement,
-  optPageReplacement
+  optPageReplacement,
 } from "../algorithms/paging";
 
 export default function PagingSimulator() {
@@ -14,8 +14,8 @@ export default function PagingSimulator() {
   const runPaging = () => {
     const pageArray = pages
       .split(",")
-      .map(p => Number(p.trim()))
-      .filter(p => !isNaN(p));
+      .map((p) => Number(p.trim()))
+      .filter((p) => !isNaN(p));
 
     if (pageArray.length === 0) return;
 
@@ -36,15 +36,13 @@ export default function PagingSimulator() {
 
   return (
     <div className="max-w-3xl mx-auto mt-10 p-6 bg-gradient-to-br from-green-50 to-white rounded-2xl shadow-xl border">
-
       {/* TITLE */}
       <h2 className="text-2xl font-bold text-center text-green-700 mb-6">
-         Paging & Page Replacement Simulator
+        Paging & Page Replacement Simulator
       </h2>
 
       {/* INPUT SECTION */}
       <div className="grid md:grid-cols-3 gap-4 mb-6">
-
         <div className="flex flex-col">
           <label className="font-semibold mb-1">Pages Reference String</label>
           <input
@@ -71,10 +69,9 @@ export default function PagingSimulator() {
             onClick={runPaging}
             className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg transition"
           >
-             Run Simulation
+            Run Simulation
           </button>
         </div>
-
       </div>
 
       {/* ALGO SELECTION */}
@@ -99,7 +96,6 @@ export default function PagingSimulator() {
       {/* RESULT */}
       {result && (
         <div className="bg-white border rounded-xl p-4 shadow-inner">
-
           <h3 className="text-lg font-bold text-green-700 mb-3">
             📊 Result Analysis
           </h3>
@@ -121,10 +117,8 @@ export default function PagingSimulator() {
               </div>
             ))}
           </div>
-
         </div>
       )}
-
     </div>
   );
 }

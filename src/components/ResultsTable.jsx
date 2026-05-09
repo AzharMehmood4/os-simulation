@@ -13,7 +13,6 @@ export default function ResultsTable({ processes }) {
           <th className="border px-2 py-1">TAT</th>
           <th className="border px-2 py-1">WT</th>
           <th className="border px-2 py-1">File</th>
-          <th className="border px-2 py-1">Operation</th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +26,6 @@ export default function ResultsTable({ processes }) {
             <td className="border px-2 py-1">{p.turnaroundTime}</td>
             <td className="border px-2 py-1">{p.waitingTime}</td>
             <td className="border px-2 py-1">{p.file}</td>
-            <td className="border px-2 py-1">{p.operation}</td>
           </tr>
         ))}
       </tbody>

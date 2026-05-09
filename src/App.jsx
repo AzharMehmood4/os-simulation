@@ -92,8 +92,10 @@ export default function App() {
           {/*SCHEDULING VIEW */}
           {view === "SCHEDULING" && (
             <>
-              <ProcessForm onAdd={addProcess} />
-
+              <ProcessForm
+  onAdd={addProcess}
+  files={fileList}
+/>
               <AlgorithmSelector
                 algorithm={algorithm}
                 setAlgorithm={setAlgorithm}
