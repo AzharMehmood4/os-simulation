@@ -31,7 +31,7 @@ function ProcessForm({ onAdd, files }) {
     <>
       <div className="bg-white shadow-md rounded-2xl p-5 mb-6 text-center">
         <h2 className="text-3xl font-bold text-gray-800">
-          Process Scheduling Algorithms Simulation (Assignment)
+          Process Scheduling Algorithms Simulation (Assignment 1)
         </h2>
       </div>
 
