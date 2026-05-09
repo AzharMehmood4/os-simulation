@@ -7,7 +7,7 @@ export default function MemoryManager({ processes }) {
   const [algo, setAlgo] = useState("FIRST");
   const [result, setResult] = useState(null);
 
-  // STORE MEMORY SIZE OF EACH PROCESS
+  // STORE MEMORY SIZE
   const [processMemory, setProcessMemory] = useState({});
 
   // DYNAMIC MEMORY BLOCKS
@@ -18,7 +18,7 @@ export default function MemoryManager({ processes }) {
   const runMemory = () => {
     let res;
 
-    // ADD MEMORY SIZE TO PROCESS
+    // ADD MEMORY  Size
     const updatedProcesses = processes.map((p) => ({
       ...p,
       memory: processMemory[p.id] || 0,
@@ -35,7 +35,7 @@ export default function MemoryManager({ processes }) {
     setResult(res);
   };
 
-  // ADD BLOCK FUNCTION
+  // ADD BLOCK
   const addBlock = () => {
     if (blockSize === "") return;
 
@@ -66,7 +66,7 @@ export default function MemoryManager({ processes }) {
         </h2>
       </div>
 
-      {/* PROCESS SECTION */}
+      {/* PROCESSES*/}
       <div className="mb-8">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">Processes</h2>
 
@@ -115,7 +115,7 @@ export default function MemoryManager({ processes }) {
         )}
       </div>
 
-      {/* ADD BLOCK SECTION */}
+      {/* ADD BLOCK  */}
       <div className="mb-6 bg-gray-50 p-4 rounded-lg">
         <h3 className="font-semibold mb-3">Add Memory Block</h3>
 
@@ -148,13 +148,13 @@ export default function MemoryManager({ processes }) {
           ></button>
         </div>
       </div>
-      {/* DELETE BLOCK SECTION */}
+      {/* DELETE BLOCK*/}
       <div className="mt-4 bg-gray-50 p-3 rounded-lg">
         <h3 className="font-semibold mb-2">Delete Memory Blocks</h3>
 
         {memoryBlocks.length === 0 ? (
           <div className="text-center text-gray-500 py-3 font-medium">
-            🚫 No Memory Blocks Available
+            No Memory Blocks Available
           </div>
         ) : (
           <div className="flex flex-wrap gap-2">

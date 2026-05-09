@@ -120,7 +120,7 @@ export const calculateFragmentation = (disk) => {
 
   for (let i = 0; i < disk.length; i++) {
 
-    // START OF FREE SPACE
+    // FREE Sp
     if (disk[i] === null && !insideFreeSpace) {
 
       fragments++;
@@ -128,7 +128,6 @@ export const calculateFragmentation = (disk) => {
       insideFreeSpace = true;
     }
 
-    // END OF FREE SPACE
     else if (disk[i] !== null) {
 
       insideFreeSpace = false;

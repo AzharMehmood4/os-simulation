@@ -1,7 +1,4 @@
-// import React, { useState } from "react";
-
 import {
-  //   createDisk,
   allocateContiguous,
   allocateLinked,
   allocateIndexed,
@@ -216,7 +213,7 @@ export default function FileSystemSimulator({
 
     setMessage("( Writing )\n Write successful");
 
-    // RELEASE LOCK AFTER 3 SEC
+    // RELEASE LOCK
     setTimeout(() => {
       setFiles((prev) =>
         prev.map((f) => {
@@ -278,7 +275,7 @@ export default function FileSystemSimulator({
         </p>
       </div>
 
-      {/* SYSTEM STATUS (ALWAYS VISIBLE) */}
+      {/* SYSTEM STATUS */}
       <div className="bg-white shadow rounded-2xl p-4 mb-6">
         <h3 className="text-lg font-bold text-gray-700 mb-2">System Status</h3>
 
@@ -287,7 +284,7 @@ export default function FileSystemSimulator({
         </div>
       </div>
 
-      {/* CREATE FILE */}
+      {/* FILE Create */}
       <div className="bg-white shadow rounded-2xl p-5 mb-6">
         <h3 className="text-xl font-semibold mb-4">Create File</h3>
 
@@ -399,7 +396,7 @@ export default function FileSystemSimulator({
         </div>
       </div>
 
-      {/* FILE TABLE (UNCHANGED COLUMNS) */}
+      {/* FILE TABLE  */}
       <div className="bg-white shadow rounded-2xl p-5 mb-6 overflow-auto">
         <h3 className="text-xl font-semibold mb-4">File Table</h3>
 

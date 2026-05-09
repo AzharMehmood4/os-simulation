@@ -18,7 +18,7 @@ export function firstFit(processes, blocks) {
         memory[i].process = p.id;
 
         log.push(
-          `✅ ${p.id} (${p.memory}KB) allocated to Block ${
+          ` ${p.id} (${p.memory}KB) allocated to Block ${
             i + 1
           } (${memory[i].size}KB)`
         );
@@ -71,7 +71,7 @@ export function bestFit(processes, blocks) {
       memory[bestIndex].process = p.id;
 
       log.push(
-        `✅ ${p.id} (${p.memory}KB) allocated to Block ${
+        ` ${p.id} (${p.memory}KB) allocated to Block ${
           bestIndex + 1
         } `
       );
@@ -114,7 +114,7 @@ export function worstFit(processes, blocks) {
       memory[worstIndex].process = p.id;
 
       log.push(
-        `✅ ${p.id} (${p.memory}KB) allocated to Block ${
+        ` ${p.id} (${p.memory}KB) allocated to Block ${
           worstIndex + 1
         } `
       );

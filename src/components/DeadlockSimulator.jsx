@@ -9,14 +9,14 @@ export default function DeadlockSimulator({ processes }) {
   // Mutex using A1 processes
   const handleMutex = () => {
     if (processes.length === 0) {
-      setOutput(["⚠️ No processes available (Add from A1 first)"]);
+      setOutput([" No processes available (Add from A1 first)"]);
       return;
     }
 
-    const simpleProcesses = processes.map(p => ({
+    const simpleProcesses = processes.map((p) => ({
       id: p.id,
       file: p.file,
-      operation: p.operation
+      operation: p.operation,
     }));
 
     const result = runMutex(simpleProcesses);
@@ -26,57 +26,51 @@ export default function DeadlockSimulator({ processes }) {
   };
 
   // Banker using A1 processes
-const handleBanker = () => {
-  if (processes.length === 0) {
-    setOutput(["⚠️ No processes available (Add from A1 first)"]);
-    return;
-  }
+  const handleBanker = () => {
+    if (processes.length === 0) {
+      setOutput([" No processes available (Add from A1 first)"]);
+      return;
+    }
 
-  const bankerProcesses = processes.map((p) => {
-    
-    // allocation depends on burst time (real dynamic logic)
-    const allocation = [
-      Math.max(1, Math.floor(p.burstTime / 2)),
-      p.priority ? Math.min(p.priority, 2) : 1
-    ];
+    const bankerProcesses = processes.map((p) => {
+      // allocation dep Bt
+      const allocation = [
+        Math.max(1, Math.floor(p.burstTime / 2)),
+        p.priority ? Math.min(p.priority, 2) : 1,
+      ];
 
-    // max depends on burst + priority (still dynamic)
-    const max = [
-      allocation[0] + Math.floor(p.burstTime / 2) + 1,
-      allocation[1] + 1
-    ];
+      const max = [
+        allocation[0] + Math.floor(p.burstTime / 2) + 1,
+        allocation[1] + 1,
+      ];
 
-    return {
-      id: p.id,
-      allocation,
-      max
-    };
-  });
+      return {
+        id: p.id,
+        allocation,
+        max,
+      };
+    });
 
-  const totalAllocation = bankerProcesses.reduce(
-    (acc, p) => {
-      acc[0] += p.allocation[0];
-      acc[1] += p.allocation[1];
-      return acc;
-    },
-    [0, 0]
-  );
+    const totalAllocation = bankerProcesses.reduce(
+      (acc, p) => {
+        acc[0] += p.allocation[0];
+        acc[1] += p.allocation[1];
+        return acc;
+      },
+      [0, 0],
+    );
 
-  const available = [
-    totalAllocation[0] + 2,
-    totalAllocation[1] + 2
-  ];
+    const available = [totalAllocation[0] + 2, totalAllocation[1] + 2];
 
-  const result = bankers(bankerProcesses, available);
+    const result = bankers(bankerProcesses, available);
 
-  setTitle("Banker's Algorithm (Dynamic A1 Input)");
-  setOutput(result.steps);
-};
-
+    setTitle("Banker's Algorithm (Dynamic A1 Input)");
+    setOutput(result.steps);
+  };
 
   return (
     <div className="mt-10 p-6 bg-white rounded-xl shadow-lg">
-<div className="bg-white shadow-md rounded-2xl p-5 mb-6 text-center">
+      <div className="bg-white shadow-md rounded-2xl p-5 mb-6 text-center">
         <h2 className="text-3xl font-bold text-gray-800">
           OS Synchronization & Deadlock Simulator (Assignment 2)
         </h2>
@@ -115,16 +109,14 @@ const handleBanker = () => {
         </button>
       </div>
 
-      {/* Output */}
+      {/* Out*/}
       <div className="bg-gray-100 p-4 rounded min-h-28">
         <h3 className="font-semibold mb-2">{title}</h3>
 
         {output.length === 0 ? (
           <p className="text-gray-500">Click a button to run simulation</p>
         ) : (
-          output.map((line, i) => (
-            <p key={i}>{line}</p>
-          ))
+          output.map((line, i) => <p key={i}>{line}</p>)
         )}
       </div>
     </div>

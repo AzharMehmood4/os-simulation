@@ -41,7 +41,7 @@ export default function PagingSimulator() {
         Paging & Page Replacement Simulator
       </h2>
 
-      {/* INPUT SECTION */}
+      {/* INPUT */}
       <div className="grid md:grid-cols-3 gap-4 mb-6">
         <div className="flex flex-col">
           <label className="font-semibold mb-1">Pages Reference String</label>
@@ -87,7 +87,7 @@ export default function PagingSimulator() {
         </button>
       </div>
 
-      {/* ACTIVE STATUS */}
+      {/* ACTIVE Algo */}
       <div className="text-center mb-4">
         <span className="text-gray-600">Active Algorithm: </span>
         <span className="font-bold text-green-700">{algo}</span>
@@ -104,7 +104,7 @@ export default function PagingSimulator() {
             Page Faults: {result.faults}
           </p>
 
-          {/* LOG TABLE STYLE */}
+          {/* LOG TABLE  */}
           <div className="max-h-64 overflow-y-auto border rounded">
             {result.log.map((item, index) => (
               <div

@@ -16,9 +16,9 @@ export function fifoPageReplacement(pages, frames) {
         memory.push(page);
       }
       faults++;
-      log.push(`❌ Page ${page} caused FAULT → [${memory.join(", ")}]`);
+      log.push(` Page ${page} caused FAULT → [${memory.join(", ")}]`);
     } else {
-      log.push(`✅ Page ${page} HIT → [${memory.join(", ")}]`);
+      log.push(` Page ${page} HIT → [${memory.join(", ")}]`);
     }
   });
 
@@ -50,9 +50,9 @@ export function lruPageReplacement(pages, frames) {
         memory[lruIndex] = page;
       }
       faults++;
-      log.push(`❌ ${page} FAULT → [${memory.join(", ")}]`);
+      log.push(` ${page} FAULT → [${memory.join(", ")}]`);
     } else {
-      log.push(`✅ ${page} HIT → [${memory.join(", ")}]`);
+      log.push(` ${page} HIT → [${memory.join(", ")}]`);
     }
   });
 
@@ -91,9 +91,9 @@ export function optPageReplacement(pages, frames) {
       }
 
       faults++;
-      log.push(`❌ ${page} FAULT → [${memory.join(", ")}]`);
+      log.push(` ${page} FAULT → [${memory.join(", ")}]`);
     } else {
-      log.push(`✅ ${page} HIT → [${memory.join(", ")}]`);
+      log.push(` ${page} HIT → [${memory.join(", ")}]`);
     }
   });
 
