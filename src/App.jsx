@@ -59,31 +59,32 @@ export default function App() {
         </h1>
 
         {/* NAVIGATION */}
-        <div className="flex justify-center gap-4 mb-6">
+        {/* NAVIGATION */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
           <button
             onClick={() => setView("SCHEDULING")}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-blue-500 text-white px-4 py-3 rounded-lg w-full text-sm sm:text-base"
           >
             Scheduling (A1)
           </button>
 
           <button
             onClick={() => setView("DEADLOCK")}
-            className="bg-red-500 text-white px-4 py-2 rounded"
+            className="bg-red-500 text-white px-4 py-3 rounded-lg w-full text-sm sm:text-base"
           >
-            SYNCHRONIZATION (A2)
+            Synchronization (A2)
           </button>
 
           <button
             onClick={() => setView("MEMORY")}
-            className="bg-purple-500 text-white px-4 py-2 rounded"
+            className="bg-purple-500 text-white px-4 py-3 rounded-lg w-full text-sm sm:text-base"
           >
             Memory (A3)
           </button>
 
           <button
             onClick={() => setView("FILESYSTEM")}
-            className="bg-green-600 text-white px-4 py-2 rounded"
+            className="bg-green-600 text-white px-4 py-3 rounded-lg w-full text-sm sm:text-base"
           >
             File System (A4)
           </button>
