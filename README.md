@@ -1,156 +1,399 @@
-# 🖥️ OS Simulation - CPU Scheduling Visualizer
+````md
+# 🖥️ Operating System Simulation Tool
 
-![React](https://img.shields.io/badge/React-17.0.2-blue?logo=react) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3.2-skyblue?logo=tailwind-css) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript)
+![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-skyblue?logo=tailwind-css)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript)
+![Vite](https://img.shields.io/badge/Vite-Frontend-purple?logo=vite)
 
-A web-based Operating System Simulation Tool that allows users to interactively visualize and analyze core OS concepts, including CPU scheduling, process synchronization, and deadlock management.
+A comprehensive **web-based Operating System Simulation Tool** developed for the course **CS313 – Operating System Concepts**.  
+The project integrates major operating system concepts into one unified simulation platform including:
 
-The system demonstrates FCFS, SJN (SJF), Round Robin, and Priority Scheduling, along with Mutex-based synchronization and Banker’s Algorithm for deadlock detection, using dynamic visualizations and real-time results.
+- CPU Scheduling
+- Process Synchronization
+- Deadlock Management
+- Memory Management
+- File System Simulation
 
----
-
-## 🔥 Features
-
-### ⚙️ CPU Scheduling
-
-- **Interactive Process Input:** Add processes with arrival time, burst time, and priority.  
-- **Dynamic Gantt Chart:** Visualizes process execution with cumulative start and end times.  
-- **Metrics Display:** Shows **waiting time, turnaround time, and completion time** for each process.  
-- **Responsive UI:** Built with **React.js** and **Tailwind CSS** for a smooth experience on any device.  
-- **Equal-width bars:** All Gantt bars are uniform while still showing cumulative timing for clarity.  
-
-
-### 🔒 Synchronization & Deadlock Management
-
-- **Mutex Simulation:** Ensures mutual exclusion when processes access shared resources.  
-- **Deadlock Detection:** Identifies unsafe states where processes may get stuck.  
-- **Banker’s Algorithm (Dynamic):** Uses user-input processes (no static data).
-                                    Determines safe or unsafe state dynamically.
-                                    Shows step-by-step execution logs
-  
----
-
-## 💻 Tech Stack
-
-- **UI:** React.js + Tailwind CSS  
-- **Logic & Algorithms:** JavaScript  
+The simulator allows users to interactively visualize how operating system components work together in real-time.
 
 ---
 
-## 🗂️ Project Structure
+# 📚 Course Information
 
+| Field | Details |
+|---|---|
+| Course Title | Operating System Concepts |
+| Course Code | CS313 |
+| Instructor | Ms. Naveen Ahmed |
+| Semester | Spring 2026 |
+| University | Abasyn University Islamabad |
+
+---
+
+# 🌐 Live Demo
+
+🔗 Live Project:  
+https://os-simulation-tau.vercel.app/
+
+---
+
+# 💻 GitHub Repository
+
+🔗 Repository Link:  
+https://github.com/AzharMehmood4/os-simulation
+
+---
+
+# 🚀 Project Overview
+
+This Operating System Simulation Tool was developed to simulate core operating system functionalities in a visual and interactive way.
+
+The project combines all assignments into one integrated system where:
+
+- Processes are created and scheduled
+- Memory is dynamically allocated
+- Shared resources are synchronized
+- Deadlocks are detected and resolved
+- Files are created, read, written, and deleted
+- Disk allocation techniques are visualized
+
+The simulator demonstrates how multiple OS components interact together in a real operating system environment.
+
+---
+
+# 🔥 Features
+
+# ⚙️ Assignment 1 – Process Scheduling
+
+Implemented CPU Scheduling Algorithms:
+
+- FCFS (First Come First Serve)
+- SJN / SJF (Shortest Job Next)
+- Round Robin
+- Priority Scheduling
+
+### Features
+
+- Add dynamic processes
+- Arrival Time, Burst Time, Priority input
+- Gantt Chart Visualization
+- Waiting Time Calculation
+- Turnaround Time Calculation
+- Completion Time Calculation
+- Throughput Calculation
+- Process-to-file linking
+
+---
+
+# 🔒 Assignment 2 – Synchronization & Deadlock
+
+### Features
+
+- Mutex Simulation
+- Critical Section Handling
+- Process Synchronization
+- Banker’s Algorithm
+- Deadlock Detection
+- Deadlock Resolution
+- Shared Resource Access
+- Dynamic process dependency simulation
+
+---
+
+# 🧠 Assignment 3 – Memory Management
+
+### Features
+
+- Paging
+- Segmentation
+- Virtual Memory
+- First Fit Allocation
+- Best Fit Allocation
+- Worst Fit Allocation
+- FIFO Page Replacement
+- LRU Page Replacement
+- OPT Page Replacement
+- Dynamic memory allocation
+- Memory fragmentation tracking
+
+---
+
+# 📂 Assignment 4 – File System Simulation
+
+### Features
+
+- File Creation
+- File Deletion
+- File Reading
+- File Writing
+- Disk Block Visualization
+- File Access by Processes
+- File Locking
+- Deadlock Risk Detection
+- File Access Logs
+- Disk Usage Monitoring
+- Fragmentation Tracking
+
+### File Allocation Techniques
+
+- Contiguous Allocation
+- Linked Allocation
+- Indexed Allocation
+
+---
+
+# 🔗 Full System Integration
+
+The final project integrates all assignments into one cohesive system.
+
+### Integration Features
+
+- Processes created in Scheduling module are used in File System module
+- Processes can access shared files
+- File conflicts trigger deadlock conditions
+- Memory is allocated dynamically to processes
+- Deadlock handling integrates with synchronization system
+- Real-time visualization of OS operations
+
+---
+
+# 🖼️ System Modules
+
+| Module | Description |
+|---|---|
+| Scheduling | CPU Scheduling Algorithms |
+| Synchronization | Mutex & Deadlock Management |
+| Memory Management | Paging & Allocation |
+| File System | File Operations & Disk Allocation |
+
+---
+
+# 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| React.js | Frontend Development |
+| Tailwind CSS | UI Design |
+| JavaScript | Algorithm Implementation |
+| Vite | Development Environment |
+
+---
+
+# 📁 Project Structure
+
+```bash
+os-simulation/
+├── src/
+│   ├── algorithms/
+│   │   ├── bankers.js
+│   │   ├── fcfs.js
+│   │   ├── priority.js
+│   │   ├── roundRobin.js
+│   │   ├── sjn.js
+│   │   ├── memory.js
+│   │   ├── paging.js
+│   │   ├── synchronization.js
+│   │   └── fileSystem.js
+│   │
+│   ├── components/
+│   │   ├── ProcessSchedulingSimulator.jsx
+│   │   ├── DeadlockSimulator.jsx
+│   │   ├── MemoryManager.jsx
+│   │   ├── PagingSimulator.jsx
+│   │   └── FileSystemSimulator.jsx
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── package.json
+├── vite.config.js
+└── README.md
+````
+
+---
+
+# ⚡ Screenshots
+
+## 🖥️ Main Dashboard
+
+(Add Screenshot Here)
+
+---
+
+## ⚙️ CPU Scheduling
+
+(Add Screenshot Here)
+
+---
+
+## 📊 Gantt Chart
+
+
+
+---
+
+## 🔒 Deadlock Detection
+
+<img width="1363" height="256" alt="image" src="https://github.com/user-attachments/assets/0dcadecc-4d95-4fac-bd77-8475070853d0" />
+
+
+---
+
+## 🧠 Memory Management
+### Process size
+
+<img width="1356" height="740" alt="image" src="https://github.com/user-attachments/assets/f69eba0c-a152-462d-bc08-57a182ce93f9" />
+
+### First Fit 
+<img width="1356" height="740" alt="image" src="https://github.com/user-attachments/assets/dc15a4e3-2279-41a6-8263-c8d138398a34" />
+
+
+---
+
+## 📂 File System Simulation
+
+<img width="1363" height="720" alt="image" src="https://github.com/user-attachments/assets/1337c2d2-8331-4833-8e48-73f9288974f9" />
+
+and all others you can check in website 
+
+
+---
+
+## 💽 Disk Blocks Visualization
+
+<img width="1297" height="724" alt="image" src="https://github.com/user-attachments/assets/6584153a-b375-45ce-84d5-d10ce164e24a" />
+
+
+---
+
+# 📈 Performance Metrics
+
+The simulator calculates and visualizes:
+
+* Waiting Time
+* Turnaround Time
+* Throughput
+* Disk Usage
+* Memory Utilization
+* Fragmentation
+* Page Faults
+* Deadlock Statistics
+* File Access Statistics
+
+---
+
+# 🎯 How the System Works
+
+## Process Scheduling
+
+Users create processes and apply scheduling algorithms to visualize execution flow using Gantt Charts And select the file Created in File System .
+
+## Synchronization
+
+Processes compete for shared resources, where mutexes and Banker’s Algorithm prevent unsafe states.
+
+## Memory Management
+
+Processes dynamically request memory while the simulator demonstrates allocation strategies and page replacement algorithms.
+
+## File System
+
+Processes access shared files using different allocation techniques while synchronization prevents conflicts and deadlocks.
+
+---
+
+# ▶️ Setup & Installation
+
+## 1 Clone Repository
+
+```bash
+git clone https://github.com/AzharMehmood4/os-simulation
 ```
 
-os-simulation/
-├─ public/
-├─ src/
-│  ├─ algorithms/
-|  |  ├─ bankers.js 
-│  │  ├─ fcfs.js
-│  │  ├─ priority.js
-│  │  ├─ roundRobin.js
-│  │  └─ sjn.js
-|  |  ├─ synchronization.js
-│  ├─ components/
-│  │  ├─ AlgorithmSelector.jsx
-|  |  ├─ DeadlockSimulator.jsx
-│  │  ├─ GanttChart.jsx
-│  │  ├─ MetricsCard.jsx
-│  │  ├─ ProcessForm.jsx
-│  │  └─ ResultsTable.jsx
-│  ├─ App.jsx
-│  ├─ index.css
-│  └─ main.jsx
-├─ .gitignore
-├─ eslint.config.js
-├─ index.html
-├─ package-lock.json
-├─ package.json
-├─ README.md
-└─ vite.config.js
-
-````
-
 ---
 
-## ⚡ Screenshots
-
-### Process Input & Algorithm Selection
-<img width="1146" height="256" alt="Screenshot from 2026-03-04 23-45-11" src="https://github.com/user-attachments/assets/c875a9e1-e0a1-4291-8e1e-2292955dcbd0" />
-
-
-### Gantt Chart Visualization
-<img width="1146" height="256" alt="Screenshot from 2026-03-04 23-46-18" src="https://github.com/user-attachments/assets/cae5e378-d7ce-4e86-b1b7-5ca2ef8a157b" />
-
-
-### Metrics Table
-<img width="1147" height="342" alt="Screenshot from 2026-03-04 23-46-47" src="https://github.com/user-attachments/assets/245275f7-690d-4ba3-a686-c7f8a1d11ecf" />
-
-### Mutex
-<img width="951" height="651" alt="image" src="https://github.com/user-attachments/assets/c21616b1-893a-4b87-93a0-fd5cb3af3338" />
-
-
-### Bankers
-![Uploading image.png…]()
-
-
----
-
-## 🚀 Setup & Run
-
-Follow these steps to run the project locally:
-
-1. **Clone the repository**  
-```bash
-git clone  https://github.com/AzharMehmood4/os-simulation
-````
-
-2. **Go into the project directory**
+## 2 Move into Project Folder
 
 ```bash
 cd os-simulation
 ```
 
-3. **Install dependencies**
+---
+
+## 3 Install Dependencies
 
 ```bash
 npm install
 ```
 
-4. **Run the development server**
+---
+
+## 4 Run Development Server
 
 ```bash
 npm run dev
 ```
 
-5. Open your browser at the URL shown in the terminal (usually `http://localhost:5173`) to see the simulator.
 
 ---
 
-## 🎯 Usage
-#### ⚙️ Run Scheduling
-1. Select a **CPU scheduling algorithm** from the Algorithm Selector.
-2. Add processes with **arrival time, burst time, and priority**.
-3. Click **Run Simulation** to view the **Gantt chart and metrics**.
-4. All process bars show **cumulative start and end times** for clarity.
+# 🎓 Educational Objectives
 
-#### 🔒 Run Synchronization & Deadlock
-5. After running scheduling, scroll to the Synchronization section.
-6. Click:
-   . Run Mutex → Simulates safe resource access
-   . Run Banker → Checks system safety
-7. View:
-   . Step-by-step logs
-   . Safe sequence OR deadlock detection
+This project helps students understand:
 
----
+* CPU Scheduling
+* Synchronization
+* Deadlocks
+* Memory Allocation
+* Paging
+* Virtual Memory
+* File Allocation
+* Fragmentation
+* Operating System Integration
 
-## 📝 License
-
-This project is for **educational purposes** only.
+through interactive visualization and simulation.
 
 ---
 
-## 🌟 Acknowledgements
+# 🔮 Future Improvements
 
-* Thanks to **React.js** and **Tailwind CSS** for making UI development smooth.
-* Inspired by **Operating Systems coursework (OS_CS313)** to visualize CPU scheduling algorithms.
+* Multi-user simulation
+* Database integration
+* Process analytics dashboard
+* Authentication system
+* Advanced file permissions
+* More scheduling algorithms
+* Real-time charts and graphs
+* Responsive For small Screens
+
+---
+
+# 👨‍💻 Developed By
+
+Azhar Mehmood
+Alyan Asghar 
+Moeez Khan
+Salik Bashir
+Software Engineering Students
+Abasyn University Islamabad
+
+---
+
+# 📄 License
+
+This project is developed for educational purposes only.
+
+---
+
+#  Acknowledgements
+
+Special thanks to:
+
+* Ms. Naveen Ahmed
+
+for guidance and learning resources throughout the project.
+
+```
+```
