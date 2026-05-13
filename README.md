@@ -1,4 +1,6 @@
-````md
+<img width="500" height="500" alt="Os Simulation Tool Logo" src="https://github.com/user-attachments/assets/a0e04a51-5b60-4a3f-a197-e4cdbd64746b" />
+
+
 # 🖥️ Operating System Simulation Tool
 
 ![React](https://img.shields.io/badge/React-18-blue?logo=react)
@@ -17,31 +19,22 @@ The project integrates major operating system concepts into one unified simulati
 
 The simulator allows users to interactively visualize how operating system components work together in real-time.
 
----
-
-# 📚 Course Information
-
-| Field | Details |
-|---|---|
-| Course Title | Operating System Concepts |
-| Course Code | CS313 |
-| Instructor | Ms. Naveen Ahmed |
-| Semester | Spring 2026 |
-| University | Abasyn University Islamabad |
 
 ---
 
 # 🌐 Live Demo
 
 🔗 Live Project:  
-https://os-simulation-tau.vercel.app/
+[https://os-simulation-tau.vercel.app/](https://os-simulation-tau.vercel.app/)
+
+Note: This website is not responsive on small screens. On mobile devices, please use Desktop View for the best experience.
 
 ---
 
 # 💻 GitHub Repository
 
 🔗 Repository Link:  
-https://github.com/AzharMehmood4/os-simulation
+[https://github.com/AzharMehmood4/os-simulation](https://github.com/AzharMehmood4/os-simulation/)
 
 ---
 
@@ -95,9 +88,6 @@ Implemented CPU Scheduling Algorithms:
 - Process Synchronization
 - Banker’s Algorithm
 - Deadlock Detection
-- Deadlock Resolution
-- Shared Resource Access
-- Dynamic process dependency simulation
 
 ---
 
@@ -114,8 +104,6 @@ Implemented CPU Scheduling Algorithms:
 - FIFO Page Replacement
 - LRU Page Replacement
 - OPT Page Replacement
-- Dynamic memory allocation
-- Memory fragmentation tracking
 
 ---
 
@@ -180,34 +168,34 @@ The final project integrates all assignments into one cohesive system.
 
 ---
 
+
 # 📁 Project Structure
 
 ```bash
 os-simulation/
 ├── src/
 │   ├── algorithms/
-│   │   ├── bankers.js
-│   │   ├── fcfs.js
-│   │   ├── priority.js
-│   │   ├── roundRobin.js
-│   │   ├── sjn.js
+│   │   ├── fileSystemA4.js
 │   │   ├── memory.js
 │   │   ├── paging.js
-│   │   ├── synchronization.js
-│   │   └── fileSystem.js
+│   │   ├── processSchedulingA1.js
+│   │   ├── synchronizationA2.js
 │   │
 │   ├── components/
-│   │   ├── ProcessSchedulingSimulator.jsx
-│   │   ├── DeadlockSimulator.jsx
+│   │   ├── DeadlockSimulatorA2.jsx
+│   │   ├── FileSystemSimulatorA4.jsx
 │   │   ├── MemoryManager.jsx
-│   │   ├── PagingSimulator.jsx
-│   │   └── FileSystemSimulator.jsx
+│   │   ├── MemoryVisualizer.jsx
+│   │   └── PagingSimulator.jsx
+│   │   ├──ProcessSchedulingA1.jsx
 │   │
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
 │
+├── index.html
 ├── package.json
+├── package-lock.json
 ├── vite.config.js
 └── README.md
 ````
@@ -218,18 +206,14 @@ os-simulation/
 
 ## 🖥️ Main Dashboard
 
-(Add Screenshot Here)
+<img width="1284" height="563" alt="Screenshot from 2026-05-13 23-59-35" src="https://github.com/user-attachments/assets/f98bedab-7dea-47c0-a97c-b056e91170f1" />
 
----
-
-## ⚙️ CPU Scheduling
-
-(Add Screenshot Here)
 
 ---
 
 ## 📊 Gantt Chart
 
+<img width="1156" height="446" alt="Screenshot from 2026-05-13 23-58-15" src="https://github.com/user-attachments/assets/0aaaa812-123a-49a8-9457-50c2c3467d2e" />
 
 
 ---
@@ -288,18 +272,23 @@ The simulator calculates and visualizes:
 
 ## Process Scheduling
 
-Users create processes and apply scheduling algorithms to visualize execution flow using Gantt Charts And select the file Created in File System .
+Processes are created and linked with files from the File System module.
+Scheduling algorithms like FCFS, SJN, Round Robin, and Priority visualize process execution using Gantt Charts.
 
-## Synchronization
+## Synchronization & Deadlock Management
 
-Processes compete for shared resources, where mutexes and Banker’s Algorithm prevent unsafe states.
+The created processes are passed into the Synchronization module for shared resource access simulation.
+Mutexes and Banker’s Algorithm help detect and prevent unsafe states and deadlocks.
 
 ## Memory Management
 
-Processes dynamically request memory while the simulator demonstrates allocation strategies and page replacement algorithms.
+The same processes are used in the Memory Management module for memory allocation.
+Users assign memory sizes, and the simulator demonstrates paging, segmentation, and page replacement algorithms.
 
 ## File System
 
+Users first create files and assign sizes using different allocation techniques like Contiguous, Linked, and Indexed Allocation.
+The system allocates disk blocks dynamically and tracks fragmentation and disk usage.
 Processes access shared files using different allocation techniques while synchronization prevents conflicts and deadlocks.
 
 ---
@@ -372,10 +361,14 @@ through interactive visualization and simulation.
 
 # 👨‍💻 Developed By
 
-Azhar Mehmood
-Alyan Asghar 
-Moeez Khan
-Salik Bashir
+Azhar Mehmood - 8397
+
+Alyan Asghar - 8651
+
+Moeez Khan - 8774
+
+Salik Bashir - 5620
+
 Software Engineering Students
 Abasyn University Islamabad
 
@@ -393,7 +386,7 @@ Special thanks to:
 
 * Ms. Naveen Ahmed
 
-for guidance and learning resources throughout the project.
+for guidance and learning resources throughout Course.
 
 ```
 ```
